@@ -11,11 +11,14 @@ export class SocketConnectionService {
   public users: Array<{userID:string,self:boolean,connected:boolean,username:string,status:string}> = [];
   public messageArray: Array<{senterid:string,senderName:String,message:String,receiverid:string,receivername:string,status:string}> = [];
   //this.socket = io('http://localhost:5100',{ autoConnect: true });
+ 
   socket = io('http://localhost:5100',{autoConnect: true,
     auth: {
       username: this.getUserName(), room:this.getRoomName()
     },
   });
+
+  
   
   constructor() { }
 
