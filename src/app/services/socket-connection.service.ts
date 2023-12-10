@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { io } from 'socket.io-client';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class SocketConnectionService {
   public messageArray: Array<{senterid:string,senderName:String,message:String,receiverid:string,receivername:string,status:string}> = [];
   //this.socket = io('http://localhost:5100',{ autoConnect: true });
  
-  socket = io('http://localhost:5100',{autoConnect: true,
+  socket = io(environment.api_url,{autoConnect: true,
     auth: {
       username: this.getUserName(), room:this.getRoomName()
     },
